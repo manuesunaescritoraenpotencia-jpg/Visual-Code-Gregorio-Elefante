@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gregorio</title>
+  <link id="favicon-gregorio" rel="icon" type="image/png" href="assets/images/Gregorio%20feliz.png">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="celular">
+
+    <!-- 1. PANTALLA DE INICIO -->
+    <section id="pantalla-inicio" class="pantalla activa">
+      <div class="fondo-inicio" onclick="tocarGregorioInicio()">
+        <img
+          src="assets/images/bienvenida.png.jpg"
+          alt="Gregorio"
+          class="imagen-bienvenida"
+          id="img-gregorio-inicio"
+        >
+
+        <div class="badge-multicolor-inicio" onclick="event.stopPropagation(); tocarGregorioInicio()">
+          <span class="c1">G</span><span class="c2">R</span><span class="c3">E</span><span class="c4">G</span><span class="c5">O</span><span class="c6">R</span><span class="c1">I</span><span class="c2">O</span>
+        </div>
+
+        <div class="contenedor-nube-hablando">
+          <div class="nube-dialogo-comic" id="burbuja-saludo">
+            Hola, soy Gregorio, un elefante científico de Tanzania. Estoy aquí para ayudarte con lo que sientes.
+          </div>
+          <div class="burbuja-colita-1"></div>
+          <div class="burbuja-colita-2"></div>
+        </div>
+
+        <button type="button" class="btn-empezar-estilo" onclick="event.stopPropagation(); irA('pantalla-emociones')">
+          Toca para comenzar
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. PANTALLA SECUNDARIA: EMOCIONES -->
+    <section id="pantalla-emociones" class="pantalla fondo-claro-magico">
+      <div class="encabezado-logo-emociones">
+        <img
+          src="assets/images/Gregorio feliz.png"
+          alt="Logo"
+          class="avatar-logo-pequeno"
+          onerror="this.style.display='none'"
+        >
+        <h2 class="titulo-multicolor-grande">
+          <span class="c1">¿</span><span class="c2">C</span><span class="c3">Ó</span><span class="c4">M</span><span class="c5">O</span> <span class="c6">T</span><span class="c1">E</span><br>
+          <span class="c2">S</span><span class="c3">I</span><span class="c4">E</span><span class="c5">N</span><span class="c6">T</span><span class="c1">E</span><span class="c2">S</span> <span class="c3">H</span><span class="c4">O</span><span class="c5">Y</span><span class="c6">?</span>
+        </h2>
+      </div>
+
+      <div class="cuadricula-marcos-magicos">
+        <button type="button" class="tarjeta-emocion-magica emo-tristeza" onclick="seleccionarEmocion('triste', 'Tristeza')">
+          <div class="interior-tarjeta-emocion">
+            <img src="assets/images/Gregorio triste.png" alt="Tristeza" class="emoji-individual">
+          </div>
+          <span class="etiqueta-emocion-magica">TRISTEZA</span>
+        </button>
+
+        <button type="button" class="tarjeta-emocion-magica emo-rabia" onclick="seleccionarEmocion('bravo', 'Rabia')">
+          <div class="interior-tarjeta-emocion">
+            <img src="assets/images/Gregorio furioso.png" alt="Rabia" class="emoji-individual">
+          </div>
+          <span class="etiqueta-emocion-magica">RABIA</span>
+        </button>
+
+        <button type="button" class="tarjeta-emocion-magica emo-alegria" onclick="seleccionarEmocion('alegre', 'Alegría')">
+          <div class="interior-tarjeta-emocion">
+            <img src="assets/images/Gregorio feliz.png" alt="Alegría" class="emoji-individual">
+          </div>
+          <span class="etiqueta-emocion-magica">ALEGRÍA</span>
+        </button>
+
+        <button type="button" class="tarjeta-emocion-magica emo-miedo" onclick="seleccionarEmocion('asustado', 'Miedo')">
+          <div class="interior-tarjeta-emocion">
+            <img src="assets/images/Gregorio asustado.png" alt="Miedo" class="emoji-individual">
+          </div>
+          <span class="etiqueta-emocion-magica">MIEDO</span>
+        </button>
+
+        <button type="button" class="tarjeta-emocion-magica emo-asco span-centro" onclick="seleccionarEmocion('desagrado', 'Asco')">
+          <div class="interior-tarjeta-emocion">
+            <img src="assets/images/Gregorio desagrado.png" alt="Asco" class="emoji-individual">
+          </div>
+          <span class="etiqueta-emocion-magica">ASCO</span>
+        </button>
+      </div>
+
+      <nav class="dock-pou">
+        <button type="button" class="dock-btn" onclick="irA('pantalla-inicio')">
+          <span>🏡</span>
+          <small>Inicio</small>
+        </button>
+        <button type="button" class="dock-btn activo" onclick="irA('pantalla-emociones')">
+          <span>💛</span>
+          <small>Emociones</small>
+        </button>
+        <button type="button" class="dock-btn" onclick="abrirPantallaCamara()">
+          <span>📷</span>
+          <small>Foto</small>
+        </button>
+        <button type="button" class="dock-btn" onclick="abrirPantallaVideojuegos()">
+          <span>🕹️</span>
+          <small>Juegos</small>
+        </button>
+      </nav>
+    </section>
+
+    <!-- 3. PANTALLA DE HUELLAS MÁGICAS (1 a 3 dedos) -->
+    <section id="pantalla-dedos" class="pantalla fondo-claro-cielo">
+      <div class="header-bosque">
+        <span id="badge-emocion" class="pildora-emocion-clara">TRISTEZA</span>
+        <h2 class="titulo-bosque-grande-claro">
+          <span class="c1">P</span><span class="c2">O</span><span class="c3">N</span> <span class="c4">A</span><span class="c5">Q</span><span class="c6">U</span><span class="c1">Í</span> <span class="c2">D</span><span class="c3">E</span><br>
+          <span class="c4">1</span> <span class="c5">A</span> <span class="c6">3</span> <span class="c1">D</span><span class="c2">E</span><span class="c3">D</span><span class="c4">O</span><span class="c5">S</span>
+        </h2>
+      </div>
+
+      <div class="orbe-magico-contador-claro">
+        <span id="numero-dedos">?</span>
+      </div>
+
+      <div id="zona-tactil" class="zona-caminito-claro">
+        <div class="sendero-musgo-claro"></div>
+        <div class="contenedor-huellas-camino" id="huellas-camino"></div>
+        <p class="instruccion-bosque-claro" id="texto-guia-camino">
+          Toca con 1, 2 o 3 deditos aquí
+        </p>
+      </div>
+
+      <div class="barra-pc-clara">
+        <small>Nivel (PC):</small>
+        <button type="button" onclick="simularCaminoPC(1)">1</button>
+        <button type="button" onclick="simularCaminoPC(2)">2</button>
+        <button type="button" onclick="simularCaminoPC(3)">3</button>
+      </div>
+
+      <nav class="dock-pou">
+        <button type="button" class="dock-btn" onclick="irA('pantalla-emociones')">
+          <span>💛</span>
+          <small>Emociones</small>
+        </button>
+        <button type="button" class="dock-btn" onclick="abrirPantallaVideojuegos()">
+          <span>🕹️</span>
+          <small>Juegos</small>
+        </button>
+      </nav>
+    </section>
+
+    <!-- 4. PANTALLA DE RITUAL Y AUDIO -->
+    <section id="pantalla-ritual" class="pantalla fondo-claro-magico pantalla-spotify">
+      <div class="contenedor-nube-ritual-externa" onclick="tocarGregorioRitual()">
+        <div class="nube-dialogo-comic-ritual" id="etiqueta-nombre-ritual">
+          RITUAL · NIVEL 1
+        </div>
+        <div class="burbuja-colita-ritual-1"></div>
+        <div class="burbuja-colita-ritual-2"></div>
+      </div>
+
+      <div class="caratula-spotify-grande-clara" onclick="tocarGregorioRitual()">
+        <div class="personaje-descanso">
+          <img
+            src=""
+            alt="Ritual"
+            class="imagen-ritual-activa"
+            id="img-ritual-gregorio"
+            onerror="this.src='assets/images/Gregorio triste.png'"
+          >
+        </div>
+        <div class="luciernagas-container">
+          <span class="luciernaga">🌿</span>
+          <span class="luciernaga">✨</span>
+          <span class="luciernaga">🌿</span>
+        </div>
+      </div>
+
+      <p class="texto-guia-fisico-externo-claro" id="descripcion-ritual-fisico">
+        Pon tu manito con la palma hacia arriba y acaricia tu pulgar suavemente.
+      </p>
+
+      <div class="barra-rama-linda-clara">
+        <div class="progreso-rama-lindo-claro" id="barra-progreso-nivel"></div>
+      </div>
+
+      <div class="reproductor-estilo">
+        <span class="onda-audio-clara">ı||ıı||ı</span>
+        <button type="button" id="btn-play" class="btn-play-verde-claro" onclick="toggleAudioPropio()" title="Escuchar guion">
+          ▶
+        </button>
+        <button type="button" class="btn-ficha-adulto" onclick="abrirModalFicha()" title="Ver ficha completa">
+          📋
+        </button>
+        <span class="onda-audio-clara">ı||ıı||ı</span>
+      </div>
+
+      <audio id="mi-audio-gregorio"></audio>
+
+      <nav class="dock-pou">
+        <button type="button" class="dock-btn" onclick="irA('pantalla-dedos')">
+          <span>🐾</span>
+          <small>Nivel</small>
+        </button>
+        <button type="button" class="dock-btn" onclick="abrirPantallaVideojuegos()">
+          <span>🕹️</span>
+          <small>Juegos</small>
+        </button>
+        <button type="button" class="dock-btn" onclick="irA('pantalla-emociones')">
+          <span>💛</span>
+          <small>Emociones</small>
+        </button>
+      </nav>
+    </section>
+
+    <!-- 5. PANTALLA DE ACTIVIDADES POR EMOCIÓN -->
+    <section id="pantalla-videojuegos" class="pantalla zona-videojuegos-arcade">
+      <div class="hud-arcade-superior">
+        <span id="badge-juego-contexto" class="chip-arcade-modo">TRISTEZA · NV.1</span>
+        <div class="medidor-animo-arcade" title="Calma / energía">
+          <span>⚡</span>
+          <div class="barra-arcade-fondo">
+            <div class="barra-arcade-relleno" id="barra-animo-gregorio" style="width: 45%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="marco-visor-arcade">
+        <div class="cabecera-visor-arcade">
+          <span class="punto-arcade p1"></span>
+          <span class="punto-arcade p2"></span>
+          <span class="punto-arcade p3"></span>
+          <span class="titulo-visor-arcade">
+            <span class="c1">J</span><span class="c2">U</span><span class="c3">E</span><span class="c4">G</span><span class="c5">O</span> <span class="c6">M</span><span class="c1">Á</span><span class="c2">G</span><span class="c3">I</span><span class="c4">C</span><span class="c5">O</span>
+          </span>
+        </div>
+        <canvas id="canvas-juego-dedos" width="325" height="295"></canvas>
+        <div class="burbuja-arcade-mensaje" id="mensaje-pou-gregorio">
+          Cuando estás triste puedes ponerte cremita suave en el spa.
+        </div>
+      </div>
+
+      <p class="guia-arcade-inferior" id="guia-juego-dedos">
+        Cuando estás triste puedes ponerte cremita suave en el spa.
+      </p>
+
+      <nav class="dock-arcade">
+        <button type="button" class="arcade-btn" data-juego="ducha" onclick="seleccionarMinijuego('ducha', this)">
+          <span>🚿</span>
+          <small>Asco</small>
+        </button>
+        <button type="button" class="arcade-btn" data-juego="casita" onclick="seleccionarMinijuego('casita', this)">
+          <span>🏠</span>
+          <small>Rabia</small>
+        </button>
+        <button type="button" class="arcade-btn" data-juego="burbujas" onclick="seleccionarMinijuego('burbujas', this)">
+          <span>🫧</span>
+          <small>Alegría</small>
+        </button>
+        <button type="button" class="arcade-btn activo" data-juego="caricia" onclick="seleccionarMinijuego('caricia', this)">
+          <span>🌿</span>
+          <small>Tristeza</small>
+        </button>
+        <button type="button" class="arcade-btn" data-juego="ritmo" onclick="seleccionarMinijuego('ritmo', this)">
+          <span>🎵</span>
+          <small>Miedo</small>
+        </button>
+        <button type="button" class="arcade-btn arcade-salir" onclick="irA('pantalla-emociones')">
+          <span>💛</span>
+          <small>Salir</small>
+        </button>
+      </nav>
+    </section>
+
+    <!-- 6. PANTALLA DE FOTO CON GREGORIO -->
+    <section id="pantalla-camara" class="pantalla zona-camara-elefante">
+      <div class="cabecera-camara">
+        <span class="chip-camara">
+          <span class="c2">F</span><span class="c3">O</span><span class="c4">T</span><span class="c5">O</span>
+        </span>
+        <span class="estado-camara" id="estado-camara-texto">Imita su carita feliz</span>
+      </div>
+
+      <div class="visor-camara-marco">
+        <video id="video-camara-elefante" autoplay playsinline muted style="display:none;"></video>
+        <canvas id="canvas-camara-elefante" width="325" height="275"></canvas>
+
+        <!-- Círculo guía grande con el dibujito de Gregorio seleccionado para imitar -->
+        <div id="circulo-guia-gregorio" class="circulo-guia-gregorio" onclick="alternarTamanoGuiaGregorio()" title="Imita a Gregorio">
+          <img id="img-guia-gregorio-circulo" src="assets/images/Gregorio feliz.png" alt="Gregorio para imitar">
+          <span id="etiqueta-guia-gregorio" class="etiqueta-guia-gregorio">Alegría</span>
+        </div>
+
+        <div id="panel-foto-capturada" class="panel-foto-capturada oculto">
+          <img
+            id="img-foto-tomada"
+            alt="Foto capturada"
+            title="Toca para descargar"
+            onclick="descargarFotoElefante()"
+          >
+          <div class="acciones-foto-tomada">
+            <a id="enlace-descarga-foto" class="btn-guardar-foto" href="#" download="gregorio-foto.png">⬇ Descargar</a>
+            <button type="button" class="btn-otra-foto" onclick="volverCamaraEnVivo()">🔄 Otra foto</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="galeria-gregorio-subidas" id="galeria-gregorio-subidas"></div>
+
+      <div class="controles-camara-inferior">
+        <button type="button" class="btn-volver-camara" onclick="irA('pantalla-emociones')">💛 Emociones</button>
+        <button type="button" class="btn-disparar-foto" onclick="tomarFotoElefante()" title="Tomar foto">📸</button>
+        <button type="button" class="btn-volver-camara" onclick="abrirPantallaVideojuegos()">🕹️ Juegos</button>
+      </div>
+    </section>
+
+    <!-- MODAL COMPARTIDO: FICHA DEL RITUAL Y ACOMPAÑAMIENTO ADULTO -->
+    <div id="modal-ficha-ritual" class="modal-ficha oculto" onclick="cerrarModalFicha(event)">
+      <div class="tarjeta-ficha" onclick="event.stopPropagation()">
+        <div class="encabezado-ficha">
+          <h3 id="ficha-titulo">Ritual</h3>
+          <button type="button" class="btn-cerrar-ficha" onclick="cerrarModalFicha()">✕</button>
+        </div>
+        <div class="contenido-ficha">
+          <p><strong>Propósito:</strong> <span id="ficha-proposito"></span></p>
+          <p><strong>Materiales:</strong> <span id="ficha-materiales"></span></p>
+          <div class="bloque-ficha">
+            <strong>Paso a paso:</strong>
+            <ol id="ficha-pasos"></ol>
+          </div>
+          <div class="bloque-ficha">
+            <strong>Guion:</strong>
+            <p class="guion-texto" id="ficha-guion"></p>
+          </div>
+          <div class="bloque-ficha">
+            <strong>Acompañamiento adulto:</strong>
+            <p id="ficha-acompanamiento"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
